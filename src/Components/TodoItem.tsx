@@ -95,7 +95,12 @@ export const TodoItem: React.FC<Props> = ({
           className="todo__title--edit"
           onChange={e => setNewTitle(e.target.value)}
           onBlur={e => {
-            handleTitleChange(e);
+            if (e.target.value === todo.title) {
+              setEditing(false);
+            } else {
+              handleTitleChange(e);
+            }
+
           }}
           onKeyDown={e => {
             if (e.key === 'Enter') {

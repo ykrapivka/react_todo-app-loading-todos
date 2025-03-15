@@ -152,6 +152,10 @@ export const App: React.FC = () => {
 
     if (!input.trim()) {
       handleErrorMessage('Title should not be empty');
+      setInputDisabled(false);
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
 
       return;
     }
@@ -166,11 +170,12 @@ export const App: React.FC = () => {
       clearForm();
     } catch {
       handleErrorMessage('Unable to add a todo');
+      setTemptTodo(null);
+      setInputDisabled(false);
+    } finally {
       setTimeout(() => {
         inputRef.current?.focus();
       }, 0);
-      setTemptTodo(null);
-      setInputDisabled(false);
     }
   }
 

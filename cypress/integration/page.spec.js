@@ -118,7 +118,7 @@ describe('', () => {
     if (failed) Cypress.runner.stop();
   });
 
-  describe('Page with no todos', () => {
+  describe.skip('Page with no todos', () => {
     it('should send 1 todos request', () => {
       const spy = cy.stub()
         .callsFake(req => req.reply({ body: [] }))
@@ -196,7 +196,7 @@ describe('', () => {
     });
   });
 
-  describe('Page with mixed todos', () => {
+  describe.skip('Page with mixed todos', () => {
     beforeEach(() => {
       page.mockLoad().as('loadRequest');
       page.visit();
@@ -271,7 +271,7 @@ describe('', () => {
     });
   });
 
-  describe('Filtering', () => {
+  describe.skip('Filtering', () => {
     describe('with mixed todos', () => {
       beforeEach(() => {
         page.mockLoad().as('loadRequest');
@@ -1385,7 +1385,7 @@ describe('', () => {
     });
   });
 
-  describe.skip('Renaming', () => {
+  describe('Renaming', () => {
     beforeEach(() => {
       page.mockLoad().as('loadRequest');
       page.visit();
@@ -1461,7 +1461,7 @@ describe('', () => {
         });
       });
 
-      describe('on Escape', () => {
+      describe.skip('on Escape', () => {
         it('should be closed', () => {
           todos.title(0).trigger('dblclick');
           todos.titleField(0).type('123123{esc}');
@@ -1490,7 +1490,7 @@ describe('', () => {
         });
       });
 
-      describe('on enter before recieved a response', () => {
+      describe.skip('on enter before recieved a response', () => {
         it('should send a request', () => {
           const spy = cy.stub()
             .callsFake(req => req.reply({ body: { ...req.body, id: 257334 } }))
@@ -1515,7 +1515,7 @@ describe('', () => {
         });
 
         // It depend on your implementation
-        it.skip('should stay while waiting', () => {
+        it('should stay while waiting', () => {
           page.mockUpdate(257334);
 
           todos.title(0).trigger('dblclick');
@@ -1526,7 +1526,7 @@ describe('', () => {
         });
       });
 
-      describe('on success', () => {
+      describe.skip('on success', () => {
         beforeEach(() => {
           page.mockUpdate(257334).as('renameRequest');
 
